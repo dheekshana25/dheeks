@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheekshana K S | HR & Marketing Portfolio</title>
+
+  <!-- Google Fonts: Playfair Display (Editorial Serif) & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f0710;
+      --card-bg: rgba(255, 235, 245, 0.035);
+      --card-border: rgba(244, 114, 182, 0.15);
+      --primary: #f472b6;           /* Soft Rose Blossom */
+      --primary-light: #fbcfe8;     /* Pastel Pink */
+      --primary-glow: rgba(244, 114, 182, 0.35);
+      --accent: #fb7185;            /* Coral Rose */
+      --gold: #fde047;
+      --text: #fff1f2;
+      --text-muted: #fda4af;
+      --subtext: #cbd5e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Falling Blossom Canvas */
+    #petal-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* Ambient Rose Glows */
+    .glow-1, .glow-2 {
+      position: fixed;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.22;
+      animation: floralFloat 14s infinite alternate ease-in-out;
+    }
+    .glow-1 {
+      top: -100px;
+      left: -100px;
+      background: radial-gradient(circle, #f43f5e 0%, transparent 70%);
+    }
+    .glow-2 {
+      bottom: -100px;
+      right: -100px;
+      background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+      animation-delay: -7s;
+    }
+
+    @keyframes floralFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 40px) scale(1.1); }
+      100% { transform: translate(-30px, 60px) scale(0.95); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 7, 16, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .logo span {
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      color: var(--subtext);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Sections Shared */
+    section {
+      padding: 100px 8% 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 2.8rem;
+      text-align: center;
+      position: relative;
+      color: #fff;
+    }
+
+    .section-title::after {
+      content: '🌸';
+      display: block;
+      font-size: 1.2rem;
+      margin-top: 6px;
+      text-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 130px;
+    }
+
+    .flower-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      color: var(--primary-light);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 15px rgba(244, 114, 182, 0.15);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, #fbcfe8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      color: var(--subtext);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .typing-text {
+      color: var(--primary);
+      font-weight: 700;
+      text-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    .hero-bio {
+      max-width: 680px;
+      color: #e2e8f0;
+      font-size: 1.05rem;
+      margin-bottom: 2.2rem;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-pink {
+      background: linear-gradient(135deg, #f472b6, #e11d48);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(244, 114, 182, 0.4);
+    }
+    .btn-pink:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(244, 114, 182, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: rgba(244, 114, 182, 0.1);
+      color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(244, 114, 182, 0.2);
+    }
+
+    /* Honors Ribbon */
+    .honors-ribbon {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .honor-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(244, 114, 182, 0.2);
+      padding: 9px 18px;
+      border-radius: 50px;
+      font-size: 0.86rem;
+      color: var(--subtext);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .honor-chip i { color: #f472b6; }
+    .honor-chip:hover {
+      border-color: var(--primary);
+      background: rgba(244, 114, 182, 0.08);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Cards & Layouts */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: rgba(244, 114, 182, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(244, 114, 182, 0.15);
+      transform: translateY(-4px);
+    }
+
+    /* Education Specific */
+    .edu-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+
+    .institution {
+      color: #94a3b8;
+      font-size: 0.93rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .score-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .score-tag span {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-shadow: 0 0 8px var(--primary-glow);
+    }
+
+    /* Timeline Experience */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .exp-period {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .exp-company {
+      color: var(--primary-light);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-list {
+      list-style-type: none;
+    }
+
+    .exp-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 0.5rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+
+    .exp-list li::before {
+      content: '🌸';
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+      top: 3px;
+    }
+
+    /* Skills Pill Containers */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-cat h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #f1f5f9;
+      transition: all 0.25s ease;
+    }
+    .pill:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+      background: rgba(244, 114, 182, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(244, 114, 182, 0.2);
+    }
+
+    /* Projects & Research */
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      background: rgba(244, 114, 182, 0.12);
+      color: var(--primary-light);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Certifications Grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 1.4rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .cert-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(244, 114, 182, 0.15);
+    }
+    .cert-card i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    /* Achievements */
+    .achieve-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .achieve-list li {
+      position: relative;
+      padding-left: 28px;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .achieve-list li i {
+      position: absolute;
+      left: 0;
+      top: 4px;
+      color: #fbbf24;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(255, 235, 245, 0.05), rgba(244, 114, 182, 0.05));
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+      transform: translateY(-3px);
+      background: rgba(244, 114, 182, 0.12);
+      box-shadow: 0 6px 20px rgba(244, 114, 182, 0.2);
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 8%;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 75px 6% 35px; }
+      .contact-details { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Falling Petals Canvas -->
+  <canvas id="petal-canvas"></canvas>
+
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">Dheekshana<span> 🌸</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Internships</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="flower-badge" data-aos="fade-down">
+      <span>🌸</span> PGDM Candidate in HR & Marketing
+    </div>
+    <h1 data-aos="fade-up" data-aos-delay="100">Dheekshana K S</h1>
+    <h2 data-aos="fade-up" data-aos-delay="200">
+      Aspiring Professional in <span class="typing-text"></span>
+    </h2>
+    <p class="hero-bio" data-aos="fade-up" data-aos-delay="300">
+      Passionate HR & Marketing candidate with practical experience in talent acquisition, employee development, digital marketing, and data analytics. Dedicated to fostering employee engagement and driving strategic business growth through data-backed insights.
+    </p>
+    <div class="hero-btns" data-aos="fade-up" data-aos-delay="400">
+      <a href="#contact" class="btn btn-pink"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+      <a href="https://linkedin.com/in/ms-dheekshana-k-s-1520ab2b2" target="_blank" class="btn btn-outline">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
+
+    <!-- Career Highlights Ribbon -->
+    <div class="honors-ribbon" data-aos="fade-up" data-aos-delay="500">
+      <div class="honor-chip"><i class="fa-solid fa-trophy"></i> 2nd Rank Overall in B.Com (Jyoti Nivas)</div>
+      <div class="honor-chip"><i class="fa-solid fa-award"></i> Ashok Leyland HR Intern</div>
+      <div class="honor-chip"><i class="fa-solid fa-feather-pointed"></i> Published Gen Z Research Presenter</div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <h2 class="section-title" data-aos="fade-up">Academic Excellence</h2>
+    <div class="grid">
+      
+      <!-- PGDM Card -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="edu-badge">Postgraduate (Pursuing)</span>
+        <h3>PGDM (HR & Marketing)</h3>
+        <p class="institution">Firebird Institute of Research in Management | 2025 – 2027</p>
+        <div class="score-tag">
+          CGPA: <span>9.06</span> / 10
+        </div>
+      </div>
+
+      <!-- B.Com Card -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="edu-badge">Undergraduate • 2nd Rank Overall</span>
+        <h3>Bachelor of Commerce (B.Com)</h3>
+        <p class="institution">Jyoti Nivas College (Autonomous), Bengaluru | 2022 – 2025</p>
+        <div class="score-tag">
+          CGPA: <span>8.65</span> / 10
+        </div>
+      </div>
+
+      <!-- HSC Card -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="300">
+        <span class="edu-badge">Higher Secondary</span>
+        <h3>HSC</h3>
+        <p class="institution">The Ashok Leyland School | 2020 – 2022</p>
+        <div class="score-tag">
+          Percentage: <span>86.8 %</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Internship Experience Section -->
+  <section id="experience">
+    <h2 class="section-title" data-aos="fade-up">Internship Experience</h2>
+    <div class="timeline">
+      
+      <!-- Ashok Leyland Unit 2 -->
+      <div class="card" data-aos="fade-up">
+        <div class="exp-header">
+          <span class="exp-role">HR Intern</span>
+          <span class="exp-period">8th Jun 2026 – 31st Aug 2026</span>
+        </div>
+        <div class="exp-company">Ashok Leyland Unit 2, Hosur</div>
+        <ul class="exp-list">
+          <li>Assisted in strategic talent management, training & development, and employee engagement initiatives.</li>
+          <li>Created and maintained HR SOPs, process documentation, compliance reports, and training records.</li>
+        </ul>
+      </div>
+
+      <!-- Venpep Solutions -->
+      <div class="card" data-aos="fade-up">
+        <div class="exp-header">
+          <span class="exp-role">Digital Marketing Intern</span>
+          <span class="exp-period">18th Dec 2025 – 18th Mar 2026</span>
+        </div>
+        <div class="exp-company">Venpep Solutions Pvt Ltd, Coimbatore</div>
+        <ul class="exp-list">
+          <li>Performed website optimization and designed digital creatives to support multi-channel campaigns.</li>
+          <li>Conducted qualitative research on company software (Todook) to strengthen product positioning and outreach.</li>
+        </ul>
+      </div>
+
+      <!-- RND Softech -->
+      <div class="card" data-aos="fade-up">
+        <div class="exp-header">
+          <span class="exp-role">HR Trainee</span>
+          <span class="exp-period">8th Sep 2025 – 24th Dec 2025</span>
+        </div>
+        <div class="exp-company">RND Softech, Coimbatore</div>
+        <ul class="exp-list">
+          <li>Executed recruitment, candidate sourcing, resume screening, and conducted 30+ daily connected screening calls.</li>
+          <li>Coordinated interview scheduling, onboarding support, job postings, and tracking reports using Zoho Sheets.</li>
+        </ul>
+      </div>
+
+      <!-- Ragavendiran & Company -->
+      <div class="card" data-aos="fade-up">
+        <div class="exp-header">
+          <span class="exp-role">Accounting Intern</span>
+          <span class="exp-period">27th May 2024 – 12th Jun 2024</span>
+        </div>
+        <div class="exp-company">Ragavendiran & Company, Hosur</div>
+        <ul class="exp-list">
+          <li>Handled GST billing, sales, and purchase ledger entries using Tally ERP.</li>
+          <li>Maintained accurate financial reports ensuring audit compliance and systematic documentation.</li>
+        </ul>
+      </div>
+
+      <!-- Ashok Leyland Inplant -->
+      <div class="card" data-aos="fade-up">
+        <div class="exp-header">
+          <span class="exp-role">Inplant Trainee</span>
+          <span class="exp-period">3rd Jul 2023 – 8th Jul 2023</span>
+        </div>
+        <div class="exp-company">Ashok Leyland, Hosur</div>
+        <ul class="exp-list">
+          <li>Gained practical exposure to automotive assembly, production processes, and shop-floor workflow operations.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Academic Projects & Research -->
+  <section id="projects">
+    <h2 class="section-title" data-aos="fade-up">Projects & Research</h2>
+    <div class="grid">
+
+      <!-- Project 1 -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="100">
+        <span class="project-tag">Summer Internship Project</span>
+        <h3>Ashok Leyland Strategic HR Study</h3>
+        <p style="color: #cbd5e1; font-size: 0.92rem;">
+          "A Study on the Impact of Strategic Talent Management, Training & Development, and HR Process Management on Organizational Performance." Formulated survey frameworks and evaluated actionable performance indices.
+        </p>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="200">
+        <span class="project-tag">International Conference</span>
+        <h3>Workforce Transformation with Gen Z</h3>
+        <p style="color: #cbd5e1; font-size: 0.92rem;">
+          Presented research paper at an International Conference organized by JNCT Professional University. Explored generational transitions, work culture evolution, and talent retention strategies.
+        </p>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card tilt-card" data-aos="fade-up" data-aos-delay="300">
+        <span class="project-tag">Quantitative Research</span>
+        <h3>Marketing & HR Analytics Studies</h3>
+        <p style="color: #cbd5e1; font-size: 0.92rem;">
+          Designed surveys, collected primary respondent data, and performed statistical analysis to deliver comprehensive findings and recommendations for organizational growth.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Key Skills Section -->
+  <section id="skills">
+    <h2 class="section-title" data-aos="fade-up">Core Competencies</h2>
+    <div class="skills-wrapper">
+      
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h4><i class="fa-solid fa-users"></i> HR & People Operations</h4>
+        <div class="pills-container">
+          <span class="pill">Talent Acquisition</span>
+          <span class="pill">HRMS (Basic)</span>
+          <span class="pill">ATS (Basic)</span>
+          <span class="pill">Employee Development</span>
+          <span class="pill">Training Records</span>
+          <span class="pill">Onboarding Support</span>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h4><i class="fa-solid fa-chart-pie"></i> Analytics & Tools</h4>
+        <div class="pills-container">
+          <span class="pill">MS Excel (Advanced)</span>
+          <span class="pill">Zoho Sheets</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill">Digital Marketing</span>
+          <span class="pill">Tally ERP</span>
+          <span class="pill">Market Research</span>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h4><i class="fa-solid fa-heart"></i> Interpersonal Strengths</h4>
+        <div class="pills-container">
+          <span class="pill">Leadership</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Teamwork</span>
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Time Management</span>
+          <span class="pill">English & Tamil</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Achievements & Certifications -->
+  <section id="achievements">
+    <h2 class="section-title" data-aos="fade-up">Achievements & Certifications</h2>
+    <div class="grid" style="margin-bottom: 2rem;">
+      <div class="card" data-aos="fade-up">
+        <h3 style="margin-bottom: 1.2rem;">Recognitions</h3>
+        <ul class="achieve-list">
+          <li><i class="fa-solid fa-star"></i> <strong>Secured 2nd Rank Overall</strong> in B.Com at Jyoti Nivas College (Autonomous), Bengaluru.</li>
+          <li><i class="fa-solid fa-medal"></i> <strong>Awarded Subject Proficiency</strong> in Economics, Statistics, HR Development, CRM, and Auditing & Assurance.</li>
+          <li><i class="fa-solid fa-trophy"></i> <strong>Secured 3rd Place</strong> in TSM Madurai College “Green Collar” HR Event.</li>
+          <li><i class="fa-solid fa-sparkles"></i> Participated in "Interstellar – Corporate Odyssey" & Product Launch at Jyoti Nivas College.</li>
+        </ul>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3 style="margin-bottom: 1.2rem;">Certifications</h3>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <i class="fa-solid fa-robot"></i>
+            <h4>AI in HR</h4>
+            <p style="color:#94a3b8; font-size: 0.8rem;">NPTEL</p>
+          </div>
+          <div class="cert-card">
+            <i class="fa-solid fa-bullhorn"></i>
+            <h4>Digital Marketing</h4>
+            <p style="color:#94a3b8; font-size: 0.8rem;">HubSpot</p>
+          </div>
+          <div class="cert-card">
+            <i class="fa-solid fa-file-excel"></i>
+            <h4>Advanced Excel</h4>
+            <p style="color:#94a3b8; font-size: 0.8rem;">Younity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-card" data-aos="fade-up">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 0.8rem;">Let's Connect</h2>
+      <p style="color: #cbd5e1; max-width: 520px; margin: 0 auto 1.5rem;">
+        Open to entry-level opportunities in HR and Marketing. I would love to connect and discuss how I can contribute to your team.
+      </p>
+
+      <div class="contact-details">
+        <a href="mailto:dheekshana25@gmail.com" class="contact-item">
+          <i class="fa-solid fa-envelope" style="color: var(--primary);"></i>
+          <span>dheekshana25@gmail.com</span>
+        </a>
+        <a href="tel:9363569017" class="contact-item">
+          <i class="fa-solid fa-phone" style="color: #4ade80;"></i>
+          <span>+91 9363569017</span>
+        </a>
+        <a href="https://linkedin.com/in/ms-dheekshana-k-s-1520ab2b2" target="_blank" class="contact-item">
+          <i class="fa-brands fa-linkedin" style="color: var(--primary);"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+
+      <p style="color: #94a3b8; font-size: 0.9rem;">
+        <i class="fa-solid fa-location-dot" style="color: var(--primary); margin-right: 6px;"></i> Hosur, Tamil Nadu
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Dheekshana K S. Designed with floral animations and modern glassmorphism.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+  <script>
+    // 1. Initialize AOS
+    AOS.init({
+      duration: 850,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 40
+    });
+
+    // 2. Initialize Typed.js
+    new Typed('.typing-text', {
+      strings: [
+        'Talent Acquisition & HR',
+        'Digital Marketing Strategy',
+        'Data & People Analytics',
+        'Employee Engagement'
+      ],
+      typeSpeed: 55,
+      backSpeed: 35,
+      backDelay: 1600,
+      loop: true
+    });
+
+    // 3. 3D Tilt Effect on Cards
+    VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+      max: 10,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.15,
+      scale: 1.02
+    });
+
+    // 4. Floating Cherry Blossom Petal Animation
+    const canvas = document.getElementById('petal-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const petalCount = 28;
+    const petals = [];
+
+    class Petal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * -height;
+        this.size = Math.random() * 8 + 7;
+        this.speedX = Math.random() * 1.5 - 0.75;
+        this.speedY = Math.random() * 1.2 + 0.8;
+        this.rotation = Math.random() * 360;
+        this.spin = Math.random() * 1.5 - 0.75;
+        this.opacity = Math.random() * 0.4 + 0.3;
+      }
+      update() {
+        this.x += this.speedX + Math.sin(this.y * 0.005) * 0.6;
+        this.y += this.speedY;
+        this.rotation += this.spin;
+
+        if (this.y > height) {
+          this.reset();
+          this.y = -10;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        ctx.fillStyle = `rgba(244, 114, 182, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size, this.size, 0, this.size * 1.4);
+        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size / 2, 0, 0);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < petalCount; i++) {
+      petals.push(new Petal());
+    }
+
+    function animatePetals() {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(petal => {
+        petal.update();
+        petal.draw();
+      });
+      requestAnimationFrame(animatePetals);
+    }
+    animatePetals();
+  </script>
+</body>
+</html>
