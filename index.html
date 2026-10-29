@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dheekshana K S | HR & Marketing Portfolio</title>
 
-  <!-- Google Fonts: Playfair Display (Editorial Serif) & Plus Jakarta Sans -->
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,15 +20,14 @@
     :root {
       --bg: #0f0710;
       --card-bg: rgba(255, 235, 245, 0.035);
-      --card-border: rgba(244, 114, 182, 0.15);
-      --primary: #f472b6;           /* Soft Rose Blossom */
+      --card-border: rgba(244, 114, 182, 0.16);
+      --primary: #f472b6;           /* Rose Blossom */
       --primary-light: #fbcfe8;     /* Pastel Pink */
       --primary-glow: rgba(244, 114, 182, 0.35);
-      --accent: #fb7185;            /* Coral Rose */
-      --gold: #fde047;
+      --accent: #fb7185;
       --text: #fff1f2;
-      --text-muted: #fda4af;
       --subtext: #cbd5e1;
+      --muted: #94a3b8;
     }
 
     * {
@@ -36,6 +35,10 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-padding-top: 110px;
     }
 
     body {
@@ -94,32 +97,41 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 1.2rem 8%;
+      padding: 1rem 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(15, 7, 16, 0.85);
+      background: rgba(15, 7, 16, 0.88);
       backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 1000;
       border-bottom: 1px solid var(--card-border);
     }
 
+    /* Fix logo wrapping into 2 lines */
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #fff;
       text-decoration: none;
-      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
+
     .logo span {
-      color: var(--primary);
+      display: inline-block;
+      font-size: 1.25rem;
       text-shadow: 0 0 10px var(--primary-glow);
     }
 
     .nav-links {
       display: flex;
-      gap: 1.8rem;
+      align-items: center;
+      gap: 1.6rem;
     }
 
     .nav-links a {
@@ -128,6 +140,7 @@
       font-size: 0.92rem;
       font-weight: 500;
       transition: all 0.3s ease;
+      white-space: nowrap;
       position: relative;
     }
     .nav-links a:hover {
@@ -145,6 +158,28 @@
       border-radius: 2px;
     }
     .nav-links a:hover::after { width: 100%; }
+
+    .nav-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 50px;
+      background: rgba(244, 114, 182, 0.12);
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      color: var(--primary-light);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+    .nav-resume:hover {
+      background: var(--primary);
+      color: #0f0710;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
 
     /* Sections Shared */
     section {
@@ -173,12 +208,12 @@
 
     /* Hero Section */
     .hero {
-      min-height: 95vh;
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding-top: 130px;
+      padding-top: 140px;
     }
 
     .flower-badge {
@@ -198,7 +233,7 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-size: clamp(2.5rem, 5.5vw, 4.4rem);
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1rem;
@@ -208,7 +243,7 @@
     }
 
     .hero h2 {
-      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      font-size: clamp(1.15rem, 2.4vw, 1.7rem);
       color: var(--subtext);
       font-weight: 400;
       margin-bottom: 1.5rem;
@@ -236,7 +271,7 @@
 
     .btn {
       padding: 12px 28px;
-      border-radius: 30px;
+      border-radius: 50px;
       font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
@@ -295,6 +330,66 @@
       background: rgba(244, 114, 182, 0.08);
       color: #fff;
       transform: translateY(-2px);
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .about-card p {
+      color: #e2e8f0;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+    .about-card p:last-child { margin-bottom: 0; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.4rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+    .stat-box:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(244, 114, 182, 0.15);
+    }
+    .stat-box b {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--primary-light);
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .stat-box span {
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
     /* Cards & Layouts */
@@ -528,7 +623,7 @@
       border-radius: 24px;
       padding: 3rem 2rem;
       text-align: center;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     }
@@ -536,7 +631,7 @@
     .contact-details {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
       margin: 2rem 0;
     }
@@ -571,16 +666,53 @@
       font-size: 0.88rem;
     }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      section { padding: 75px 6% 35px; }
-      .contact-details { flex-direction: column; align-items: stretch; }
+    /* Mobile Navigation Fixes */
+    @media (max-width: 860px) {
+      nav {
+        flex-wrap: wrap;
+        padding: 0.8rem 5%;
+        gap: 0.6rem;
+      }
+      .logo {
+        font-size: 1.25rem;
+      }
+      .nav-resume {
+        padding: 6px 14px;
+        font-size: 0.82rem;
+      }
+      /* Horizontal scrollable nav on phones */
+      .nav-links {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        padding: 6px 0;
+        gap: 1.2rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-links a {
+        font-size: 0.88rem;
+        padding-bottom: 4px;
+      }
+      section {
+        padding: 85px 5% 35px;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-details {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Falling Petals Canvas -->
+  <!-- Falling Cherry Blossom Petal Animation -->
   <canvas id="petal-canvas"></canvas>
 
   <div class="glow-1"></div>
@@ -588,7 +720,7 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="#" class="logo">Dheekshana<span> 🌸</span></a>
+    <a href="#home" class="logo">Dheekshana<span>🌸</span></a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#education">Education</a>
@@ -598,6 +730,9 @@
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
     </div>
+    <a href="Dheekshana_Resume.pdf" download class="nav-resume">
+      <i class="fa-solid fa-download"></i> Resume
+    </a>
   </nav>
 
   <!-- Hero Section -->
@@ -613,7 +748,12 @@
       Passionate HR & Marketing candidate with practical experience in talent acquisition, employee development, digital marketing, and data analytics. Dedicated to fostering employee engagement and driving strategic business growth through data-backed insights.
     </p>
     <div class="hero-btns" data-aos="fade-up" data-aos-delay="400">
-      <a href="#contact" class="btn btn-pink"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+      <a href="Dheekshana_Resume.pdf" download class="btn btn-pink">
+        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <i class="fa-solid fa-envelope"></i> Get in Touch
+      </a>
       <a href="https://linkedin.com/in/ms-dheekshana-k-s-1520ab2b2" target="_blank" class="btn btn-outline">
         <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
@@ -624,6 +764,43 @@
       <div class="honor-chip"><i class="fa-solid fa-trophy"></i> 2nd Rank Overall in B.Com (Jyoti Nivas)</div>
       <div class="honor-chip"><i class="fa-solid fa-award"></i> Ashok Leyland HR Intern</div>
       <div class="honor-chip"><i class="fa-solid fa-feather-pointed"></i> Published Gen Z Research Presenter</div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title" data-aos="fade-up">About Me</h2>
+    <div class="about-grid">
+      <div class="about-card" data-aos="fade-up">
+        <p>
+          I am a PGDM candidate specializing in <strong>Human Resources & Marketing</strong> at Firebird Institute of Research in Management, with an undergraduate foundation in Commerce (B.Com) from Jyoti Nivas College Autonomous, where I secured <strong>2nd Rank Overall</strong>.
+        </p>
+        <p>
+          My practical background spans <strong>talent acquisition, digital marketing campaigns, training & development SOPs, and marketing analytics</strong> across internships at Ashok Leyland, Venpep Solutions, and RND Softech.
+        </p>
+        <p>
+          I thrive on bringing a combination of structured communication, empathetic leadership, and data-driven methods to optimize employee relations and business growth.
+        </p>
+      </div>
+
+      <div class="about-stats" data-aos="fade-up" data-aos-delay="150">
+        <div class="stat-box">
+          <b>9.06</b>
+          <span>PGDM CGPA</span>
+        </div>
+        <div class="stat-box">
+          <b>8.65</b>
+          <span>B.Com CGPA (2nd Rank)</span>
+        </div>
+        <div class="stat-box">
+          <b>5</b>
+          <span>Internship Experiences</span>
+        </div>
+        <div class="stat-box">
+          <b>30+</b>
+          <span>Daily Sourcing Calls</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -873,6 +1050,10 @@
         <a href="https://linkedin.com/in/ms-dheekshana-k-s-1520ab2b2" target="_blank" class="contact-item">
           <i class="fa-brands fa-linkedin" style="color: var(--primary);"></i>
           <span>LinkedIn</span>
+        </a>
+        <a href="Dheekshana_Resume.pdf" download class="contact-item">
+          <i class="fa-solid fa-file-pdf" style="color: var(--primary);"></i>
+          <span>Download Resume (PDF)</span>
         </a>
       </div>
 
