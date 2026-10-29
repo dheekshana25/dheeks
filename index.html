@@ -38,7 +38,7 @@
     }
 
     html {
-      scroll-padding-top: 110px;
+      scroll-padding-top: 130px;
     }
 
     body {
@@ -97,21 +97,21 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 1rem 8%;
+      padding: 1.1rem 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(15, 7, 16, 0.88);
+      background: rgba(15, 7, 16, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       z-index: 1000;
       border-bottom: 1px solid var(--card-border);
+      transition: all 0.3s ease;
     }
 
-    /* Fix logo wrapping into 2 lines */
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: #fff;
       text-decoration: none;
@@ -124,7 +124,7 @@
 
     .logo span {
       display: inline-block;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       text-shadow: 0 0 10px var(--primary-glow);
     }
 
@@ -208,7 +208,7 @@
 
     /* Hero Section */
     .hero {
-      min-height: 90vh;
+      min-height: 92vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -220,7 +220,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 7px 18px;
       background: rgba(244, 114, 182, 0.1);
       border: 1px solid rgba(244, 114, 182, 0.35);
       color: var(--primary-light);
@@ -233,7 +233,7 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1rem;
@@ -666,43 +666,81 @@
       font-size: 0.88rem;
     }
 
-    /* Mobile Navigation Fixes */
+    /* =========================================
+       CLEAN MOBILE HEADER & SPACING OVERHAUL
+    ========================================= */
     @media (max-width: 860px) {
       nav {
-        flex-wrap: wrap;
-        padding: 0.8rem 5%;
-        gap: 0.6rem;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        row-gap: 0.75rem;
+        padding: 0.9rem 5% 0.7rem;
       }
+      
       .logo {
-        font-size: 1.25rem;
+        grid-column: 1;
+        font-size: 1.35rem;
+        align-self: center;
       }
+
       .nav-resume {
+        grid-column: 2;
         padding: 6px 14px;
-        font-size: 0.82rem;
+        font-size: 0.8rem;
+        align-self: center;
       }
+
       /* Horizontal scrollable nav on phones */
       .nav-links {
+        grid-column: 1 / -1;
         display: flex;
         width: 100%;
         overflow-x: auto;
-        padding: 6px 0;
-        gap: 1.2rem;
+        padding: 4px 0 6px;
+        gap: 0.6rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
+
       .nav-links::-webkit-scrollbar {
         display: none;
       }
+
       .nav-links a {
-        font-size: 0.88rem;
-        padding-bottom: 4px;
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(244, 114, 182, 0.25);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: #f1f5f9;
+        flex-shrink: 0;
       }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .nav-links a:hover, .nav-links a:active {
+        background: rgba(244, 114, 182, 0.18);
+        border-color: var(--primary);
+        color: var(--primary-light);
+      }
+
+      /* HERO SECTION: Plenty of breathing room so nothing collides */
+      .hero {
+        padding-top: 190px !important;
+        min-height: auto;
+        padding-bottom: 40px;
+      }
+
       section {
         padding: 85px 5% 35px;
       }
+
       .about-grid {
         grid-template-columns: 1fr;
       }
+
       .contact-details {
         flex-direction: column;
         align-items: stretch;
@@ -721,6 +759,9 @@
   <!-- Navigation -->
   <nav>
     <a href="#home" class="logo">Dheekshana<span>🌸</span></a>
+    <a href="Dheekshana_Resume.pdf" download class="nav-resume">
+      <i class="fa-solid fa-download"></i> Resume
+    </a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#education">Education</a>
@@ -730,9 +771,6 @@
       <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="Dheekshana_Resume.pdf" download class="nav-resume">
-      <i class="fa-solid fa-download"></i> Resume
-    </a>
   </nav>
 
   <!-- Hero Section -->
