@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dheekshana K S | HR & Marketing Portfolio</title>
 
+  <!-- High-Res Custom Favicon for Chrome Tab -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='petalGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23fbcfe8'/%3E%3Cstop offset='50%25' stop-color='%23f472b6'/%3E%3Cstop offset='100%25' stop-color='%23e11d48'/%3E%3C/linearGradient%3E%3CradialGradient id='centerGlow' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23fff'/%3E%3Cstop offset='100%25' stop-color='%23fb7185'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23130716'/%3E%3Cg transform='translate(32,32)'%3E%3Cg id='petal'%3E%3Cpath d='M 0,-5 C -8,-17 -13,-26 0,-30 C 13,-26 8,-17 0,-5 Z' fill='url(%23petalGrad)' opacity='0.95'/%3E%3C/g%3E%3Cuse href='%23petal' transform='rotate(72)'/%3E%3Cuse href='%23petal' transform='rotate(144)'/%3E%3Cuse href='%23petal' transform='rotate(216)'/%3E%3Cuse href='%23petal' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='5' fill='url(%23centerGlow)'/%3E%3C/g%3E%3C/svg%3E" />
+
   <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +24,8 @@
       --bg: #0f0710;
       --card-bg: rgba(255, 235, 245, 0.035);
       --card-border: rgba(244, 114, 182, 0.16);
-      --primary: #f472b6;           /* Rose Blossom */
-      --primary-light: #fbcfe8;     /* Pastel Pink */
+      --primary: #f472b6;           /* Sakura Rose */
+      --primary-light: #fbcfe8;     /* Soft Blossom */
       --primary-glow: rgba(244, 114, 182, 0.35);
       --accent: #fb7185;
       --text: #fff1f2;
@@ -61,7 +64,7 @@
       z-index: 99;
     }
 
-    /* Ambient Rose Glows */
+    /* Ambient Sakura Glows */
     .glow-1, .glow-2 {
       position: fixed;
       width: 550px;
@@ -91,6 +94,21 @@
       100% { transform: translate(-30px, 60px) scale(0.95); }
     }
 
+    /* Top Corner Cherry Blossom Branch Overlay (matching banner style) */
+    .sakura-branch-corner {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 220px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.38;
+      background: radial-gradient(circle at top right, rgba(244, 114, 182, 0.4) 0%, transparent 65%);
+      mask-image: radial-gradient(ellipse at top right, black 50%, transparent 90%);
+      -webkit-mask-image: radial-gradient(ellipse at top right, black 50%, transparent 90%);
+    }
+
     /* Navigation */
     nav {
       position: fixed;
@@ -117,15 +135,20 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 10px;
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    .logo span {
-      display: inline-block;
-      font-size: 1.3rem;
-      text-shadow: 0 0 10px var(--primary-glow);
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 8px var(--primary-glow));
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(45deg) scale(1.1);
     }
 
     .nav-links {
@@ -415,7 +438,7 @@
       transform: translateY(-4px);
     }
 
-    /* Education Specific */
+    /* Education */
     .edu-badge {
       display: inline-block;
       font-size: 0.75rem;
@@ -512,14 +535,14 @@
       top: 3px;
     }
 
-    /* Skills Pill Containers */
+    /* Skills */
     .skills-wrapper {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    .skill-cat h4 {
+    .skills-wrapper h4 {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       margin-bottom: 1rem;
@@ -553,7 +576,7 @@
       box-shadow: 0 4px 14px rgba(244, 114, 182, 0.2);
     }
 
-    /* Projects & Research */
+    /* Projects */
     .project-card h3 {
       font-size: 1.25rem;
       margin-bottom: 0.6rem;
@@ -570,7 +593,7 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Certifications Grid */
+    /* Certifications */
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -666,9 +689,7 @@
       font-size: 0.88rem;
     }
 
-    /* =========================================
-       CLEAN MOBILE HEADER & SPACING OVERHAUL
-    ========================================= */
+    /* Responsive Mobile */
     @media (max-width: 860px) {
       nav {
         display: grid;
@@ -690,7 +711,6 @@
         align-self: center;
       }
 
-      /* Horizontal scrollable nav on phones */
       .nav-links {
         grid-column: 1 / -1;
         display: flex;
@@ -720,13 +740,6 @@
         display: none;
       }
 
-      .nav-links a:hover, .nav-links a:active {
-        background: rgba(244, 114, 182, 0.18);
-        border-color: var(--primary);
-        color: var(--primary-light);
-      }
-
-      /* HERO SECTION: Plenty of breathing room so nothing collides */
       .hero {
         padding-top: 190px !important;
         min-height: auto;
@@ -750,15 +763,43 @@
 </head>
 <body>
 
-  <!-- Falling Cherry Blossom Petal Animation -->
+  <!-- Falling Sakura Petal Canvas (Realistic flutter & drift) -->
   <canvas id="petal-canvas"></canvas>
 
+  <!-- Top Right Blossom Branch Ambience -->
+  <div class="sakura-branch-corner"></div>
+
+  <!-- Ambient Glows -->
   <div class="glow-1"></div>
   <div class="glow-2"></div>
 
   <!-- Navigation -->
   <nav>
-    <a href="#home" class="logo">Dheekshana<span>🌸</span></a>
+    <a href="#home" class="logo">
+      <!-- Sakura Logo Vector -->
+      <svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoPetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fbcfe8" />
+            <stop offset="50%" stop-color="#f472b6" />
+            <stop offset="100%" stop-color="#e11d48" />
+          </linearGradient>
+        </defs>
+        <g transform="translate(32,32)">
+          <g id="blossomPetal">
+            <!-- Natural Sakura Petal with notched cleft -->
+            <path d="M 0,-4 C -8,-14 -12,-24 -3,-28 C -1,-29 0,-27 0,-26 C 0,-27 1,-29 3,-28 C 12,-24 8,-14 0,-4 Z" fill="url(#logoPetalGrad)" />
+          </g>
+          <use href="#blossomPetal" transform="rotate(72)" />
+          <use href="#blossomPetal" transform="rotate(144)" />
+          <use href="#blossomPetal" transform="rotate(216)" />
+          <use href="#blossomPetal" transform="rotate(288)" />
+          <circle cx="0" cy="0" r="4.5" fill="#fff" opacity="0.9" />
+          <circle cx="0" cy="0" r="2.5" fill="#f43f5e" />
+        </g>
+      </svg>
+      <span>Dheekshana</span>
+    </a>
     <a href="Dheekshana_Resume.pdf" download class="nav-resume">
       <i class="fa-solid fa-download"></i> Resume
     </a>
@@ -1016,13 +1057,14 @@
         </div>
       </div>
 
+      <!-- Cleaned up from heart icon to professional leadership icon -->
       <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <h4><i class="fa-solid fa-heart"></i> Interpersonal Strengths</h4>
+        <h4><i class="fa-solid fa-handshake-angle"></i> Interpersonal Strengths</h4>
         <div class="pills-container">
-          <span class="pill">Leadership</span>
-          <span class="pill">Communication</span>
-          <span class="pill">Teamwork</span>
-          <span class="pill">Problem Solving</span>
+          <span class="pill">Empathetic Leadership</span>
+          <span class="pill">Cross-functional Communication</span>
+          <span class="pill">Team Collaboration</span>
+          <span class="pill">Strategic Problem Solving</span>
           <span class="pill">Time Management</span>
           <span class="pill">English & Tamil</span>
         </div>
@@ -1103,7 +1145,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Dheekshana K S. Designed with floral animations and modern glassmorphism.</p>
+    <p>&copy; 2026 Dheekshana K S. Designed with authentic cherry blossom aesthetic and glassmorphism.</p>
   </footer>
 
   <!-- Scripts -->
@@ -1143,7 +1185,7 @@
       scale: 1.02
     });
 
-    // 4. Floating Cherry Blossom Petal Animation
+    // 4. Sakura Cherry Blossom Petal Animation (Swirling & Notched Petals)
     const canvas = document.getElementById('petal-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -1155,49 +1197,90 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const petalCount = 28;
+    const petalCount = 36;
     const petals = [];
 
-    class Petal {
+    // Distinct realistic Sakura palette
+    const petalColors = [
+      'rgba(255, 183, 203, 0.75)', // soft pastel blossom
+      'rgba(244, 114, 182, 0.65)', // rose pink
+      'rgba(251, 113, 133, 0.55)', // coral rose
+      'rgba(253, 164, 175, 0.70)', // pale sakura
+      'rgba(244, 63, 94, 0.45)'    // deep cherry
+    ];
+
+    class SakuraPetal {
       constructor() {
-        this.reset();
+        this.reset(true);
       }
-      reset() {
+      reset(init = false) {
         this.x = Math.random() * width;
-        this.y = Math.random() * -height;
-        this.size = Math.random() * 8 + 7;
-        this.speedX = Math.random() * 1.5 - 0.75;
-        this.speedY = Math.random() * 1.2 + 0.8;
+        this.y = init ? Math.random() * height : -20;
+        this.length = Math.random() * 11 + 9;
+        this.width = this.length * (Math.random() * 0.3 + 0.55);
+        this.speedX = Math.random() * 1.6 + 0.4; // gentle natural wind drift to the right
+        this.speedY = Math.random() * 1.3 + 0.8;
         this.rotation = Math.random() * 360;
-        this.spin = Math.random() * 1.5 - 0.75;
-        this.opacity = Math.random() * 0.4 + 0.3;
+        this.spinSpeed = (Math.random() - 0.5) * 1.8;
+        this.flip = Math.random() * Math.PI;
+        this.flipSpeed = Math.random() * 0.03 + 0.015;
+        this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+        this.wobblePhase = Math.random() * Math.PI * 2;
       }
       update() {
-        this.x += this.speedX + Math.sin(this.y * 0.005) * 0.6;
+        this.wobblePhase += 0.02;
+        this.x += this.speedX + Math.sin(this.wobblePhase) * 0.9;
         this.y += this.speedY;
-        this.rotation += this.spin;
+        this.rotation += this.spinSpeed;
+        this.flip += this.flipSpeed;
 
-        if (this.y > height) {
-          this.reset();
-          this.y = -10;
+        if (this.y > height + 20 || this.x > width + 30) {
+          this.reset(false);
+          this.x = Math.random() * width * 1.1 - (width * 0.1);
         }
       }
       draw() {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate((this.rotation * Math.PI) / 180);
-        ctx.fillStyle = `rgba(244, 114, 182, ${this.opacity})`;
+        // 3D flipping projection
+        ctx.scale(Math.cos(this.flip), 1);
+
+        ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size, this.size, 0, this.size * 1.4);
-        ctx.bezierCurveTo(this.size, this.size, this.size, -this.size / 2, 0, 0);
+        
+        // Realistic notched Sakura petal outline
+        ctx.moveTo(0, -this.length / 2);
+        ctx.bezierCurveTo(
+          this.width, -this.length * 0.4,
+          this.width * 1.1, this.length * 0.2,
+          this.width * 0.3, this.length * 0.48
+        );
+        // Sakura tip notch
+        ctx.lineTo(0, this.length * 0.38);
+        ctx.lineTo(-this.width * 0.3, this.length * 0.48);
+        ctx.bezierCurveTo(
+          -this.width * 1.1, this.length * 0.2,
+          -this.width, -this.length * 0.4,
+          0, -this.length / 2
+        );
+        ctx.closePath();
         ctx.fill();
+
+        // Subtle petal vein highlight
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(0, -this.length * 0.35);
+        ctx.lineTo(0, this.length * 0.2);
+        ctx.stroke();
+
         ctx.restore();
       }
     }
 
     for (let i = 0; i < petalCount; i++) {
-      petals.push(new Petal());
+      petals.push(new SakuraPetal());
     }
 
     function animatePetals() {
